@@ -3,8 +3,8 @@
 #include<algorithm>
 using namespace std;
 
-// Ã°ÅİÅÅĞò Ñ¡ÔñÅÅĞò ²åÈëÅÅĞò ¹é²¢ÅÅĞò
 
+// å†’æ³¡æ’åº é€‰æ‹©æ’åº æ’å…¥æ’åº å½’å¹¶æ’åºÃƒÂ°Ã…ÃÃ…Ã…ÃÃ² Ã‘Â¡Ã”Ã±Ã…Ã…ÃÃ² Â²Ã¥ÃÃ²
 
 void swap(int &i, int &j){
     int temp = i;
@@ -13,7 +13,7 @@ void swap(int &i, int &j){
 }
 
 
-// 1.Ã°ÅİÅÅĞò
+// 1.ÃƒÂ°Ã…ÃÃ…Ã…Ã å†’æ³¡æ’åºÃ²
 void BubbleSort(vector<int> &nums){
     if(nums.size() < 2)
         return;
@@ -30,7 +30,7 @@ void BubbleSort(vector<int> &nums){
     // cout<<"????"<<num<<endl;
 }
 
-// 2.Ñ¡ÔñÅÅĞò
+// 2.Ã‘Â¡Ã”Ã±Ã…Ã…ÃÃ²é€‰æ‹©æ’åº
 void SelectSort(vector<int> &nums){
     if(nums.size() < 2)
         return;
@@ -46,7 +46,7 @@ void SelectSort(vector<int> &nums){
     // cout<<"????"<<num<<endl;
 }
 
-// 3.²åÈëÅÅĞò
+// 3.Â²Ã¥ÃˆÃ«Ã…Ã…ÃÃ²æ’å…¥æ’åº
 void InsertSort(vector<int> &nums){
     if(nums.size() < 2)
         return;
@@ -66,7 +66,7 @@ void print(vector<int> nums){
     }
 }
 
-// 4.¹é²¢ÅÅĞò
+// 4.Â¹Ã©Â²Â¢Ã…Ã…ÃÃ²å½’å¹¶æ’åº
 void Sort(vector<int> &nums, int low, int high);
 void Merge(vector<int> &nums, int low, int mid, int high);
 void MergeSort(vector<int> &nums){
@@ -109,18 +109,18 @@ int main(){
         vec.push_back(rand() % 500);
     }
     // sort(vec.begin(), vec.end());
-    cout<<"Ô­Ê¼Êı×é"<<endl;
+    cout<<"Ã”Â­ÃŠÂ¼ÃŠÃ½Ã—Ã©"<<endl;
     print(vec);
-    // cout<<endl<<"Ã°ÅİÅÅĞò:"<<endl;
+    // cout<<endl<<"ÃƒÂ°Ã…ÃÃ…Ã…ÃÃ²:"<<endl;
     // BubbleSort(vec);
     // print(vec);
-    // cout<<endl<<"Ñ¡ÔñÅÅĞò:"<<endl;
+    // cout<<endl<<"Ã‘Â¡Ã”Ã±Ã…Ã…ÃÃ²:"<<endl;
     // SelectSort(vec);
     // print(vec);
-    // cout<<endl<<"²åÈëÅÅĞò:"<<endl;
+    // cout<<endl<<"Â²Ã¥ÃˆÃ«Ã…Ã…ÃÃ²:"<<endl;
     // InsertSort(vec);
     // print(vec);
-    cout<<endl<<"¹é²¢ÅÅĞò:"<<endl;
+    cout<<endl<<"Â¹Ã©Â²Â¢Ã…Ã…ÃÃ²:"<<endl;
     MergeSort(vec);
     print(vec);
     system("pause");
