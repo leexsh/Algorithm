@@ -10,7 +10,7 @@ void swap(int &i, int &j){
     i = j;
     j = temp;
 }
-// √∞≈›≈≈–Ú
+// 1.√∞≈›≈≈–Ú
 void BubbleSort(vector<int> &nums){
     if(nums.size() < 2)
         return;
@@ -27,7 +27,7 @@ void BubbleSort(vector<int> &nums){
     // cout<<"????"<<num<<endl;
 }
 
-// —°‘Ò≈≈–Ú
+// 2.—°‘Ò≈≈–Ú
 void SelectSort(vector<int> &nums){
     if(nums.size() < 2)
         return;
@@ -43,7 +43,7 @@ void SelectSort(vector<int> &nums){
     // cout<<"????"<<num<<endl;
 }
 
-// ≤Â»Î≈≈–Ú
+// 3.≤Â»Î≈≈–Ú
 void InsertSort(vector<int> &nums){
     if(nums.size() < 2)
         return;
@@ -63,7 +63,7 @@ void print(vector<int> nums){
     }
 }
 
-// πÈ≤¢≈≈–Ú
+// 4.πÈ≤¢≈≈–Ú
 void Sort(vector<int> &nums, int low, int high);
 void Merge(vector<int> &nums, int low, int mid, int high);
 void MergeSort(vector<int> &nums){
