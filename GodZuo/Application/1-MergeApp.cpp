@@ -18,7 +18,7 @@ using namespace std;
     把逆序对相加进行返回就是共有多少逆序对。
 */
 
-// 逆序对发生器
+// 逆序对发生器  时间复杂度O(n^2)
 int getMin(vector<int> nums){
     int sum = 0;
     for(int i = 1; i < nums.size(); i++){
@@ -29,10 +29,62 @@ int getMin(vector<int> nums){
     }
     return sum;
 }
+void print(vector<int> v){
+    for(auto i : v){
+        cout<<i<<" ";
+    }
+}
+// 采用归并方法 时间复杂度O(NlogN)
+int Sort(vector<int>&, int, int);
+int Merge(vector<int>&, int, int, int);
+int SmallSum(vector<int> &nums){
+    if(nums.size() < 2)
+        return 0;
+    return Sort(nums, 0, nums.size() - 1);
+}
+// 左区间的小和 + 右区间的小和 + 左右区间归并产生的小和
+int Sort(vector<int> &nums, int low, int high){
+    if(low == high)
+        return 0;
+    int mid = low + ((high - low)>>1);
+    return Sort(nums, low, mid) + Sort(nums, mid + 1, high) + Merge(nums, low, mid, high); 
+}
+// 归并产生小和的过程
+int Merge(vector<int> &nums, int low, int mid, int high){
+    int p1 = low, p2 = mid + 1;
+    vector<int> help(high - low + 1);
+    int ans = 0;
+    int i = 0;
+    while(p1 <= mid &&p2 <= high){
+        ans += nums[p1] < nums[p2] ? (high - p2 + 1)*nums[p1] : 0;
+        help[i++] = nums[p1] < nums[p2] ? nums[p1++] : nums[p2++];
+    }
+
+    while(p1 <= mid){
+        help[i++] = nums[p1++];
+    }
+    while(p2 <= high){
+        help[i++] = nums[p2++];
+    }
+
+    for(int i = 0; i < help.size(); i++){
+        nums[low + i] = help[i];
+    }
+    return ans;
+}
+
 int main(){
-    vector<int> v{1, 3, 4, 2, 5};
+    vector<int> v;
+
+    // 随机发生器
+    for(int i = 0; i < 500; i++){
+        v.push_back(rand() % 100);
+    }
+  
     int n = getMin(v);
-    cout<<"sdf:"<<n<<endl;
+    int k = SmallSum(v);
+    cout<<endl<<"逆序对发生器结果:"<<n<<endl;
+    cout<<"归并排序逆序对结果:"<<k<<endl;
     system("pause");
     return 0;
 }
