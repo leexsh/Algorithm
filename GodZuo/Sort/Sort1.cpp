@@ -5,11 +5,14 @@ using namespace std;
 
 // √∞≈›≈≈–Ú —°‘Ò≈≈–Ú ≤Â»Î≈≈–Ú πÈ≤¢≈≈–Ú
 
+
 void swap(int &i, int &j){
     int temp = i;
     i = j;
     j = temp;
 }
+
+
 // 1.√∞≈›≈≈–Ú
 void BubbleSort(vector<int> &nums){
     if(nums.size() < 2)
@@ -54,7 +57,7 @@ void InsertSort(vector<int> &nums){
             num++;
         }
     }
-    // cout<<"????"<<num<<endl;
+    
 }
 void print(vector<int> nums){
     auto i = nums.begin();
