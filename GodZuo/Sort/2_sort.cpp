@@ -114,6 +114,7 @@ pair<int, int> partition2(vector<int>&nums, int low,int high){
     pair<int, int> p(left+1, right);
     return p;
 }
+<<<<<<< HEAD
 // 将pair改为数组 实现相同的改进的随机快排
 void sort3(vector<int>&nums, int low, int high);
 vector<int> partition3(vector<int> &nums, int low, int high);
@@ -160,6 +161,8 @@ vector<int> partition3(vector<int> &nums, int low, int high){
     vec.push_back(right);
     return vec;
 }
+=======
+>>>>>>> 339fd3625b998ad160d2f34da2a2708db4a7a66a
 int main(){
     vector<int> vec;
     for(int i = 0; i < 500; i++){
