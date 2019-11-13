@@ -7,8 +7,6 @@ using namespace std;
 // 组的左边，大于num的数放在数组的右边。
 // 要求额外空间复杂度O(1)，时间复杂度O(N)
 
-
-
 void partition1(vector<int> &arr, int num){
     int cur = -1;
     int size = arr.size();
