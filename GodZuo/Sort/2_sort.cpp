@@ -1,6 +1,6 @@
 #include"bits/stdc++.h"
 using namespace std;
-//快速排序
+//快速排序 堆排序
 
 // 经典快排
 void sort1(vector<int>&, int, int);
@@ -160,6 +160,50 @@ vector<int> partition3(vector<int> &nums, int low, int high){
     vec.push_back(right);
     return vec;
 }
+
+// 堆排序(大根堆)
+void heapInsert(vector<int> &nums, int index);
+void heapify(vector<int> &nums, int index, int heapsize);
+void HeapSort(vector<int> &nums){
+    if(nums.size() < 2){
+        return;
+    }
+    //构建大根堆
+    for(int i = 0; i < nums.size(); i++){
+        heapInsert(nums, i);
+    }
+    //将堆顶元素和最后一个元素交换
+    int heapsize = nums.size();
+    swap(nums, 0, --heapsize);
+    //将堆顶不断进行交换 不断构建大根堆的过程
+    while(heapsize > 0){
+        heapify(nums, 0, heapsize);
+        swap(nums, 0, --heapsize);
+        
+    }
+}
+//构建大根堆的过程
+void heapInsert(vector<int> &nums, int index){
+    while(nums[index] > nums[(index - 1) / 2]){
+        swap(nums, index, (index - 1)/2);
+        index = (index - 1)/2;
+    }
+}
+//heapsize 是堆的大小
+void heapify(vector<int> &nums, int index, int heapsize){
+    int left = index * 2 + 1;
+    // int largest;
+    while(left < heapsize){
+        // int largest = nums[left] > nums[left + 1] && (left + 1) < heapsize ? left : left + 1;
+        int largest = nums[left] < nums[left + 1] && (left + 1) < heapsize ? left + 1 : left;
+        largest = nums[largest] > nums[index] ? largest : index;
+        if(largest == index)
+            break;
+        swap(nums, largest, index);
+        index = largest;
+        left = index * 2 + 1;
+    }
+}
 int main(){
     vector<int> vec;
     for(int i = 0; i < 500; i++){
@@ -169,8 +213,11 @@ int main(){
     // cout<<"经典快排："<<endl;
     // quicksort1(vec);
     // print(vec);
-    cout<<"改进的快速排序："<<endl;
-    quicksort2(vec);
+    // cout<<"改进的快速排序："<<endl;
+    // quicksort2(vec);
+    // print(vec);
+    cout<<"堆排序(大根堆):"<<endl;
+    HeapSort(vec);
     print(vec);
     system("pause");
     return 0;
