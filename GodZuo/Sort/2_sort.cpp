@@ -1,6 +1,6 @@
 #include"bits/stdc++.h"
 using namespace std;
-//快速排序 堆排序
+//快速排序 堆排序 希尔排序
 
 // 经典快排
 void sort1(vector<int>&, int, int);
@@ -190,18 +190,45 @@ void heapInsert(vector<int> &nums, int index){
     }
 }
 //heapsize 是堆的大小
+// 将最后一个元素和栈顶元素交换后的调整过程
 void heapify(vector<int> &nums, int index, int heapsize){
     int left = index * 2 + 1;
     // int largest;
     while(left < heapsize){
+        // 判断index的最大值是他的左孩子还是右孩子
         // int largest = nums[left] > nums[left + 1] && (left + 1) < heapsize ? left : left + 1;
         int largest = nums[left] < nums[left + 1] && (left + 1) < heapsize ? left + 1 : left;
+        // 判断index的最大值和自己的关系
         largest = nums[largest] > nums[index] ? largest : index;
         if(largest == index)
             break;
+        // 交换之后继续向下调整
         swap(nums, largest, index);
         index = largest;
         left = index * 2 + 1;
+    }
+}
+
+// 希尔排序
+void ShellSort(vector<int> &nums){
+    if(nums.size() < 2)
+        return;
+    for(int nGap = nums.size()/2; nGap > 0; nGap /= 2){
+        for(int i = 0; i < nGap; i++){
+            for(int j = i+nGap; j < nums.size(); j+=nGap){
+	            int k = j-nGap;//有序的最后一个
+				int temp = nums[j]; //无序元素
+
+				while(temp < nums[k] && k>=i)
+				{
+					nums[k+nGap] = nums[k];
+					k-=nGap;
+				}
+
+				//元素放入
+				nums[k+nGap] = temp;
+            }
+        }
     }
 }
 int main(){
@@ -216,8 +243,11 @@ int main(){
     // cout<<"改进的快速排序："<<endl;
     // quicksort2(vec);
     // print(vec);
-    cout<<"堆排序(大根堆):"<<endl;
-    HeapSort(vec);
+    // cout<<"堆排序(大根堆):"<<endl;
+    // HeapSort(vec);
+    // print(vec);
+    cout<<"希尔排序:"<<endl;
+    ShellSort(vec);
     print(vec);
     system("pause");
     return 0;
