@@ -15,6 +15,7 @@ public:
     }
     ~MyQueue(){
         delete []arr;
+        arr = NULL;
     }
     // push
     void push(int num){
@@ -38,6 +39,10 @@ public:
     }
     // peek
     int peek(){
+        if(size == 0)
+        {
+            return -1;
+        }
         return arr[front];
     }
 public:
@@ -46,6 +51,12 @@ public:
     int front;//∂”Õ∑
     int rear;//∂”Œ≤
     int length;
+};
+
+class MyStack{
+public:
+public:
+
 };
 int main(){
     MyQueue q(5);
@@ -56,14 +67,7 @@ int main(){
     cout<<q.pop()<<" ";
     cout<<q.peek()<<endl;
     cout<<q.pop()<<" ";
-    cout<<q.peek()<<endl;
-    cout<<q.pop()<<" ";
-    cout<<q.peek()<<endl;
-    cout<<q.pop()<<" ";
-    cout<<q.peek()<<endl;
-    // cout<<q.pop()<<" "<<q.peek()<<" "<<q.pop()<<endl;
-    // int arr = new int[3];
-    // cout<<sizeof(arr)/sizeof(arr[0])<<endl;
+   
     system("pause");
     return 0;
 }
