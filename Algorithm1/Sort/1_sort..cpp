@@ -34,12 +34,10 @@ void BubbleSort(vector<int> &nums){
 void SelectSort(vector<int> &nums){
     if(nums.size() < 2)
         return;
-    int num = 0;
     for(int i = 0; i < nums.size() - 1; ++i){
         int min = i;
         for(int j = i + 1; j < nums.size(); ++j){
             min = nums[min] > nums[j] ? j : min;
-            num++;
         }
         swap(nums[i], nums[min]);
     }
@@ -50,11 +48,9 @@ void SelectSort(vector<int> &nums){
 void InsertSort(vector<int> &nums){
     if(nums.size() < 2)
         return;
-    int num = 0;
     for(int i = 1; i < nums.size(); ++i){
         for(int j = i - 1; j >= 0 && nums[j] > nums[j+1]; --j){
             swap(nums[j], nums[j+ 1]);
-            num++;
         }
     }
     

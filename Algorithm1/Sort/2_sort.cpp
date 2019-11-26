@@ -213,12 +213,13 @@ void heapify(vector<int> &nums, int index, int heapsize){
 void ShellSort(vector<int> &nums){
     if(nums.size() < 2)
         return;
+    //排序间隙
     for(int nGap = nums.size()/2; nGap > 0; nGap /= 2){
         for(int i = 0; i < nGap; i++){
             for(int j = i+nGap; j < nums.size(); j+=nGap){
 	            int k = j-nGap;//有序的最后一个
 				int temp = nums[j]; //无序元素
-
+                //插入排序
 				while(temp < nums[k] && k>=i)
 				{
 					nums[k+nGap] = nums[k];
@@ -231,6 +232,7 @@ void ShellSort(vector<int> &nums){
         }
     }
 }
+
 int main(){
     vector<int> vec;
     for(int i = 0; i < 500; i++){
