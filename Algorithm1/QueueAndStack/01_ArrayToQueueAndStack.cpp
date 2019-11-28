@@ -4,8 +4,11 @@ using namespace std;
 
 //队列
 class MyQueue{
-public:
-    MyQueue():arr(NULL), size(0), front(0), rear(0){}
+public: 
+    // 默认大小是10
+    MyQueue():size(0), front(0), rear(0), length(10){
+        arr = new int[10];
+    }
     MyQueue(int len){
         arr = new int[len];
         size = 0;
@@ -55,7 +58,41 @@ public:
 
 class MyStack{
 public:
+    MyStack(){
+        arr = new int[10];
+        top = 0;
+        size = 10;
+    }
+    MyStack(int len){
+        arr = new int[len];
+        top = 0;
+        size = len;
+    }
+    // pop
+    int pop(){
+        if(top<0)
+            return -1;
+        return arr[top--];
+    }
+    // push
+    void push(int num){
+        if(top + 1 > size)
+        return;
+        arr[top++] = num;
+    }
+    // top
+    int getTop(){
+        return arr[top];
+    }
+    // isEmpty
+    ~MyStack(){
+        delete []arr;
+        arr = NULL;
+    }
 public:
+    int *arr;
+    int top;
+    int size;
 
 };
 int main(){
