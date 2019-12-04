@@ -26,27 +26,12 @@ void ZhiPrint(vector<vector<int>> &nums){
         PrintLevel(nums, a,b,c,d,f);
         a = b == endH ? a+1 : a;
         b = b == endH ? b: b+1;
-        
+        // c影响d 先操作d 再操作c
         d = c == endS ? d+1 : d;
         c = c ==endS ? c: c+1;
         f = !f;
     }
-    	// int a = 0;
-		// int b = 0;
-		// int c = 0;
-		// int d = 0;
-		// int endS = nums.size() - 1;
-		// int endH = nums[0].size() - 1;
-        // bool f = false;
-		// while (a != endS + 1) {
-		// 	PrintLevel(nums, a, b, c, d, f);
-		// 	a = b == endH ? a + 1 : a;
-		// 	b = b == endH ? b : b + 1;
-            
-		// 	d = c == endS ? d + 1 : d;
-		// 	c = c == endS ? c : c + 1;
-		// 	f = !f;
-		// }
+   
 
 }
 void PrintLevel(vector<vector<int>> &nums, int a,int b, int c, int d, bool f){
