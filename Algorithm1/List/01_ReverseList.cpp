@@ -68,7 +68,12 @@ DouList *reverseDouList(DouList *node){
 }
 //递归打印单向链表
 List *ResverList2(List *node){
-    
+    if (node == NULL || node->next == NULL) return node;
+    List* p = ResverList2(node->next);
+    node->next->next = node;
+    node->next = NULL;
+    return p;
+
 }
 void print(List *l){
     while(l){

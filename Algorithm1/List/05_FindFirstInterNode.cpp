@@ -38,21 +38,42 @@ ListNode *isLoop2(ListNode *head){
     if(head == NULL || head->next == NULL || head->next->next == NULL){
         return NULL;
     }
-    ListNode *slow = head;
     ListNode *fast = head;
+    ListNode *slow = head;
+    while(fast->next != NULL && fast->next->next != NULL){
+        fast = fast->next->next;
+        slow = slow->next;
+        if(fast == slow)
+        {
+             fast = head;
+            while(fast != slow){
+                slow = slow->next;
+                fast = fast->next;
+            }
+            return slow;
+        }
+    }
+    return NULL;
+}
+ListNode *isLoop3(ListNode *head){
+     if(head == NULL || head->next == NULL || head->next->next == NULL){
+        return NULL;
+    }
+    ListNode *fast = head->next->next;
+    ListNode *slow = head->next;
     while(fast != slow){
-        if(fast->next == NULL || fast->next->next == NULL){
+        if(fast->next  == NULL&& fast->next->next == NULL){
             return NULL;
         }
-        slow = slow->next;
         fast = fast->next->next;
+        slow = slow->next;
     }
     fast = head;
     while(fast != slow){
         fast = fast->next;
         slow = slow->next;
     }
-    return fast;
+    return slow;
 }
 void test01(){
     ListNode *p = new ListNode(1);
