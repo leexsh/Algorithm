@@ -86,7 +86,7 @@ void postOrderRec(TreeNode *head){
     cout<<head->val<<" ";
 }
 
-// 后序遍历-非递归
+// 后序遍历-非递归 借助两个栈
 void postOrderNoRec(TreeNode *head){
     if(head){
         stack<TreeNode*>  s1;
@@ -109,6 +109,54 @@ void postOrderNoRec(TreeNode *head){
         }
     }
 }
+// 后序遍历-非递归 借助一个栈
+void postOrderNoRec1(TreeNode *head){
+    if(head == NULL){
+        return;
+    }
+    stack<TreeNode*> s;
+    TreeNode *pMark;
+    while(head || !s.empty()){
+        // 压到底
+        while(head){
+            s.push(head);
+            head = head->left;
+        }
+        // 如果他的you NULL或者右边标记了  就弹出
+        if(s.top()->right == NULL || s.top()->right == pMark)
+		{
+			//弹出 打印 标记
+            pMark = s.top();
+            s.pop();
+			cout<<pMark->val<<" ";
+		}
+		else
+		{
+			head = s.top()->right;
+		}
+    }
+
+}
+
+// 二叉树的顺序遍历
+void seQueTraversal(TreeNode *head){
+    if(head == nullptr){
+        return;
+    }
+    queue<TreeNode*> que;
+    que.push(head);
+    while(!que.empty()){
+        head = que.front();
+        que.pop();
+        cout<<head->val<<" ";
+        if(head->left){
+            que.push(head->left);
+        }
+        if(head->right){
+            que.push(head->right);
+        }
+    }
+}
 int main(){
     TreeNode *head = new TreeNode(1);
     head->left = new TreeNode(2);
@@ -126,10 +174,13 @@ int main(){
     // cout<<endl;
     // inOrderRec(head);
     // cout<<endl;
-    postOrderNoRec(head);
+    postOrderNoRec1(head);
     cout<<endl;
     postOrderRec(head);
-
+    cout<<endl;
+    seQueTraversal(head);
+    
+    
     system("pause");
     return 0;
 }
