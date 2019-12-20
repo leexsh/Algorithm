@@ -60,7 +60,7 @@ int main(){
     r.insert("B");
     r.insert("C");
     r.insert("D");
-    cout<<"random "<<r.getRandom()<<endl;
+    cout<<"random "<<r.getRandom()<<endl; 
     r.deleteKey(string("A"));
     cout<<"random "<<r.getRandom()<<endl;
     system("pause");
