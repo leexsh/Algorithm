@@ -48,9 +48,26 @@ int findMax(int k, int m, vector<int> &cost, vector<int>& profit){
     for(int i = 0; i < vec.size(); i++){
         minCost.push(vec[i]);
     }
+    // cout<<"cost small "<<endl;
+    // while(!minCost.empty()){
+    //     cout<<"cost:"<<minCost.top().cost<<" pro"<<minCost.top().profit<<endl;
+    //     minCost.pop();
+    // }
+    // for(int i = 0; i < vec.size(); i++){
+    //     minCost.push(vec[i]);
+    // }
+    // cout<<"pro big :"<<endl;
+    // while(!minCost.empty()){
+    //     maxPro.push(minCost.top());
+    //     minCost.pop();
+    // }
+    // while(!maxPro.empty()){
+    //     cout<<"cost:"<<maxPro.top().cost<<" pro"<<maxPro.top().profit<<endl;
+    //     maxPro.pop();
+    // }
     // 把当前能做的项目 按照利润放入大根堆中 做利润最大的项目
-    for(int i  = 0; i < k; i ++){
-        while(!minCost.empty() || minCost.top().cost <= m ){
+    for(int i  = 0; i < k; i++){
+        while(!minCost.empty() && minCost.top().cost <= m ){
             maxPro.push(minCost.top());
             minCost.pop();
         }
@@ -58,7 +75,7 @@ int findMax(int k, int m, vector<int> &cost, vector<int>& profit){
         if(maxPro.empty()){
             return m;
         }
-        
+
         m += maxPro.top().profit;
         maxPro.pop();
     }
@@ -66,9 +83,9 @@ int findMax(int k, int m, vector<int> &cost, vector<int>& profit){
 
 } 
 int main(){
-    vector<int> cost{40,20,30};
-    vector<int> pro{30,40,10};
-    findMax(10,2,cost, pro);
+    vector<int> cost{3,2,1};
+    vector<int> pro{1,2,3};
+    // findMax(2,0,cost, pro);
     system("pause");
     return 0;
 }
