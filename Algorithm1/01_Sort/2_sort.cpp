@@ -29,7 +29,7 @@ int partition1(vector<int>&nums, int low, int high){
     int ans = nums[high];
     int temp;
     while(low < high){
-        // 小于等于left的都放在left的左边 大于left的都放在left的右边
+        // 小于等于ans的都放在left的左边 大于ans的都放在left的右边
         if(nums[low] <= ans){
             temp = nums[++left];
             nums[left] = nums[low];
@@ -45,13 +45,6 @@ int partition1(vector<int>&nums, int low, int high){
     return left;
 }
 
-
-void print(vector<int> nums){
-    auto i = nums.begin();
-    while(i != nums.end()){
-        cout<<*i++<<" ";
-    }
-}
 
 //交换数组中的两个数
 void swap(vector<int>&nums, int i, int j){
@@ -189,6 +182,7 @@ void heapInsert(vector<int> &nums, int index){
         index = (index - 1)/2;
     }
 }
+
 //heapsize 是堆的大小
 // 将最后一个元素和栈顶元素交换后的调整过程
 void heapify(vector<int> &nums, int index, int heapsize){
@@ -250,7 +244,7 @@ int main(){
     // print(vec);
     cout<<"希尔排序:"<<endl;
     ShellSort(vec);
-    print(vec);
+    // print(vec);
     system("pause");
     return 0;
 }

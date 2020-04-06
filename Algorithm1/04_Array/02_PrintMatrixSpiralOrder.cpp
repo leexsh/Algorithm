@@ -25,7 +25,7 @@ void printMatrixSpiralOrder(vector<vector<int>> &nums){
 void printEdge(vector<vector<int>>&nums, int a, int b, int c, int d){
     //æÿ’Û «“ª––
     if(a == c){
-        for(int i = d; i <=d; i++){
+        for(int i = b; i <=d; i++){
             cout<<nums[a][i]<<" ";
         }
     }

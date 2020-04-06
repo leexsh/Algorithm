@@ -30,6 +30,7 @@ void BubbleSort(vector<int> &nums){
     // cout<<"????"<<num<<endl;
 }
 
+
 // 2.Ñ¡ÔñÅÅÐò选择排序
 void SelectSort(vector<int> &nums){
     if(nums.size() < 2)
@@ -81,6 +82,8 @@ void Sort(vector<int> &nums, int low, int high){
     Sort(nums, mid+1, high);
     Merge(nums, low, mid, high);
 }
+
+
 void Merge(vector<int> &nums, int low, int mid, int high){
     int p1 = low, p2 = mid + 1;
     vector<int> help(high - low + 1);
@@ -122,4 +125,3 @@ int main(){
     system("pause");
     return 0;
 }
-
